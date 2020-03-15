@@ -11,8 +11,8 @@ import java.util.Map;
  * @author liShiWei
  * @date 2020-03-12
  */
-public class vrp {
-    static String filePath = "/Users/li/Desktop/code/20160219/service/vrp/src/main/resources/jieguo.txt";
+public class VRP {
+    static String filePath = "/Users/li/Desktop/code/20160219/service/VRP/src/main/resources/jieguo.txt";
     public static void main(String[] args) {
         Map<Long, List<Point>> points = getVrpInput(filePath);
 
@@ -48,6 +48,7 @@ public class vrp {
                 p.setFetchLatitude(39.924695);
                 p.setFetchLongitude(116.421868);
                 p.setEstimateUnixTime(1L);
+                p.setSugUnixTime(1L);
 
                 List<Point> points;
                 if(batchId2Points.containsKey(batchNo)){

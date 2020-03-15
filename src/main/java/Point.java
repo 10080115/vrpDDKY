@@ -2,7 +2,7 @@
  * @author liShiWei
  * @date 2020-03-12
  */
-class Point {
+public class Point {
     /**
      * 站点编号
      */
@@ -67,6 +67,11 @@ class Point {
      * 指派时刻
      */
     private Long dispatchUnixTime;
+
+    /**
+     * 运单交付时间
+     */
+    private Long sugUnixTime;
 
     public Long getOrderId() {
         return orderId;
@@ -170,5 +175,13 @@ class Point {
 
     public void setDispatchUnixTime(Long dispatchUnixTime) {
         this.dispatchUnixTime = dispatchUnixTime;
+    }
+
+    public Long getSugUnixTime() {
+        return sugUnixTime;
+    }
+
+    public void setSugUnixTime(Long sugUnixTime) {
+        this.sugUnixTime = sugUnixTime;
     }
 }
