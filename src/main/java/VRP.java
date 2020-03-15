@@ -18,7 +18,7 @@ public class VRP {
 
         //3.使用for循环利用EntrySet进行遍历
         for(Map.Entry<Long,List<Point>>entry: points.entrySet()){
-            System.out.println("Item :"+entry.getKey()+" Count:"+entry.getValue().size());
+            System.out.println("Item:"+entry.getKey()+" Count:"+entry.getValue().size());
         }
     }
 
