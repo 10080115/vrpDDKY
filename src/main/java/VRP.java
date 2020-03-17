@@ -2,25 +2,57 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 
 /**
  * @author liShiWei
  * @date 2020-03-12
  */
 public class VRP {
-    static String filePath = "/Users/li/Desktop/code/20160219/service/VRP/src/main/resources/jieguo.txt";
+    static String filePath = "D:/vrpDDKY/src/main/resources/jieguo_1.txt";
     public static void main(String[] args) {
         Map<Long, List<Point>> points = getVrpInput(filePath);
 
+        points.forEach((key,value)->{
+
+            System.out.println("batch_no:" +key);
+//            System.out.println("------");
+//            value.forEach(v -> System.out.println(v.getOrderId()+","+v.getSendLongitude()+","));
+            value.forEach(v -> System.out.println("送点纬度:"+v.getSendLatitude()+","+"送点经度:"+v.getSendLongitude()+","));
+//            System.out.println("------");
+
+            System.out.println("聚类结果：");
+
+            List<Set<Point>> cluster = PointUtils.cluster(value, 1000);
+
+//            System.out.println("------");
+            cluster.forEach( set -> {
+                for(Point p:set){
+                    System.out.print(p.getOrderId()+",");
+                }
+                System.out.println();
+            });
+            System.out.println("------");
+        });
+
+
         //3.使用for循环利用EntrySet进行遍历
-        for(Map.Entry<Long,List<Point>>entry: points.entrySet()){
-            System.out.println("Item:"+entry.getKey()+" Count:"+entry.getValue().size());
-        }
+//        for(Map.Entry<Long,List<Point>>entry: points.entrySet()){
+////            System.out.println("Item:"+entry.getKey()+" Count:"+entry.getValue().size());
+//            for(int i=0;i<entry.getValue().size();i++){
+//                System.out.println("list:"+entry.getValue().get(i).toString());
+////                System.out.println("order_id:"+entry.getValue().get(i).getOrderId());
+////                System.out.println("lat:"+entry.getValue().get(i).getSendLatitude());
+////                System.out.println("lng:"+entry.getValue().get(i).getSendLongitude());
+//            }
+//        }
     }
+
+
 
 
     static Map<Long, List<Point>> getVrpInput(String filePath){
