@@ -73,6 +73,26 @@ public class Point {
      */
     private Long sugUnixTime;
 
+//    /**
+//     * @author guoyang
+//     * @param l
+//     * @param v
+//     * @param v1
+//     */
+//
+//    public Point(long l, double v, double v1) {
+//    }
+
+
+    public Point() {
+    }
+
+    public Point(Long orderId, Double sendLatitude, Double sendLongitude) {
+        this.orderId = orderId;
+        this.sendLatitude = sendLatitude;
+        this.sendLongitude = sendLongitude;
+    }
+
     public Long getOrderId() {
         return orderId;
     }
