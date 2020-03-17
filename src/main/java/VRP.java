@@ -17,6 +17,7 @@ public class VRP {
     public static void main(String[] args) {
         Map<Long, List<Point>> points = getVrpInput(filePath);
 
+
         points.forEach((key,value)->{
 
             System.out.println("batch_no:" +key);
