@@ -5,6 +5,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
+import util.LatitudeLontitudeUtil;
 import util.Util;
 
 
@@ -65,13 +66,21 @@ public class PointUtils {
                 if(neighbourPoint.size() > 0){      //如果中心点有邻近点，即构成了邻近表，该邻近列表大小大于0
                     for(Point neighbour:neighbourPoint){        //循环邻近列表中的邻近点
 //                        int minDistance = MapUtils.getDistanceValue(point, neighbour, RouteMatrixEnum.STRAIGHT,1.4);        //计算中心点和邻近点的距离
-                        int minDistance = (int)Util.lngLat2Distance(point.getSendLatitude(),point.getSendLongitude(),neighbour.getSendLatitude(),neighbour.getSendLongitude());
+//                        int minDistance = (int)Util.lngLat2Distance(point.getSendLatitude(),point.getSendLongitude(),neighbour.getSendLatitude(),neighbour.getSendLongitude());
+                        double[] xytemp = new double[2];
+                        xytemp = LatitudeLontitudeUtil.lonLat2Mercator(point.getSendLongitude(), point.getSendLatitude());
+                        double x1m = xytemp[1];
+                        double y1m = xytemp[0];
+                        xytemp = LatitudeLontitudeUtil.lonLat2Mercator(neighbour.getSendLongitude(), neighbour.getSendLatitude());
+                        double x2m = xytemp[1];
+                        double y2m = xytemp[0];
+                        int minDistance = (int) LatitudeLontitudeUtil.lineSpace(x1m, y1m, x2m, y2m);
                         int idx = pointList.indexOf(neighbour);     //把邻近点在点集合中的index赋给idx
                         if(idx != -1){      //判断idx是否等于-1
                             if(distance2center[idx] == null || minDistance < distance2center[idx]){     //
                                 centerIds[idx] = point.getOrderId();
 //                                centerIds[idx] = point.getOrderId();     //把中心点的ID赋给邻近点的位置
-                                distance2center[idx] = minDistance;
+                                distance2center[idx] = (int)minDistance;
                             }
                         }
                     }
@@ -110,8 +119,18 @@ public class PointUtils {
 //                continue;
 //            }
 //            int value = MapUtils.getDistanceValue(point, p, RouteMatrixEnum.STRAIGHT, 1.4);     //不等的话，计算中心点point和p之间的距离
-            int value = (int)Util.lngLat2Distance(point.getSendLatitude(),point.getSendLongitude(),p.getSendLatitude(),p.getSendLongitude());
-            System.out.println(value);
+//            int value = (int)Util.lngLat2Distance(point.getSendLatitude(),point.getSendLongitude(),p.getSendLatitude(),p.getSendLongitude());
+            double[] xytemp = new double[2];
+            xytemp = LatitudeLontitudeUtil.lonLat2Mercator(point.getSendLongitude(), point.getSendLatitude());
+            double x1m = xytemp[1];
+            double y1m = xytemp[0];
+
+            xytemp = LatitudeLontitudeUtil.lonLat2Mercator(p.getSendLongitude(), p.getSendLatitude());
+            double x2m = xytemp[1];
+            double y2m = xytemp[0];
+
+            int value = (int) LatitudeLontitudeUtil.lineSpace(x1m, y1m, x2m, y2m);
+            System.out.println(point.getOrderId()+"--->"+p.getOrderId()+":"+value);
             if(value <= distance) {
                 list.add(p);
             }
