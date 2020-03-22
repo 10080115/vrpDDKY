@@ -4,9 +4,9 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.*;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+//import com.google.common.collect.Lists;
+//import com.google.common.collect.Maps;
+//import com.google.common.collect.Sets;
 import util.LatitudeLontitudeUtil;
 
 import javax.naming.PartialResultException;
@@ -16,7 +16,7 @@ import javax.naming.PartialResultException;
  * @date 2020-03-12
  */
 public class VRP {
-    static String filePath = "D:/vrpDDKY/src/main/resources/jieguo_1.txt";
+    static String filePath = "D:\\android\\vrpDDKY\\src\\main\\resources\\jieguo_1.txt";
     public static void main(String[] args) {
         Map<Long, List<Point>> points = getVrpInput(filePath);
 
