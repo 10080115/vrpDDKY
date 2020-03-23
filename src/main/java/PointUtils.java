@@ -52,44 +52,41 @@ public class PointUtils {
     }
 
     public static void main(String[] args) {
-        test();
-////        String ymd = DateUtils.formatYMD(new Date());
-////        System.out.println(ymd);
-////        Date date = DateUtils.parseYMD(ymd);
-////        System.out.println(DateUtils.getSubMinute(date,new Date())/5);
-//        Point p1 = new Point(1L,116.422594,39.930595);
-//        Point p2 = new Point(2L,116.426403,39.93148);
-//        Point p3 = new Point(3L,116.420079,39.929211);
-//        Point p4 = new Point(4L,116.447316,39.921327);
-//        Point p5 = new Point(5L,116.446956,39.923153);
-//        Point p6 = new Point(6L,116.445986,39.920995);
-//        Point p7 = new Point(7L,116.43341,39.912666);
-//        Point p8 = new Point(8L,116.433589,39.911089);
-//        Point p9 = new Point(9L,116.431793,39.913302);
-//
-//        List<Point> pointList  = new ArrayList<>();
-//        pointList.add(p1);
-//        pointList.add(p2);
-//        pointList.add(p3);
-//        pointList.add(p4);
-//        pointList.add(p5);
-//        pointList.add(p6);
-//        pointList.add(p7);
-//        pointList.add(p8);
-//        pointList.add(p9);
-//
-//
-////        System.out.println(pointList);
-//        List<Set<Point>> list = cluster(pointList, 1000);
-//        list.forEach(set ->{
-//            set.forEach(point ->{
-//                System.out.print(point.getOrderId()+",");
-//            });
-//            System.out.println();
-//        });
+//        String ymd = DateUtils.formatYMD(new Date());
+//        System.out.println(ymd);
+//        Date date = DateUtils.parseYMD(ymd);
+//        System.out.println(DateUtils.getSubMinute(date,new Date())/5);
+        Point p1 = new Point(1L, 116.422594, 39.930595);
+        Point p2 = new Point(2L, 116.426403, 39.93148);
+        Point p3 = new Point(3L, 116.420079, 39.929211);
+        Point p4 = new Point(4L, 116.447316, 39.921327);
+        Point p5 = new Point(5L, 116.446956, 39.923153);
+        Point p6 = new Point(6L, 116.445986, 39.920995);
+        Point p7 = new Point(7L, 116.43341, 39.912666);
+        Point p8 = new Point(8L, 116.433589, 39.911089);
+        Point p9 = new Point(9L, 116.431793, 39.913302);
 
+        List<Point> pointList = new ArrayList<>();
+        pointList.add(p1);
+        pointList.add(p2);
+        pointList.add(p3);
+        pointList.add(p4);
+        pointList.add(p5);
+        pointList.add(p6);
+        pointList.add(p7);
+        pointList.add(p8);
+        pointList.add(p9);
+
+
+//        System.out.println(pointList);
+        List<Set<Point>> list = cluster(pointList, 1000);
+        list.forEach(set -> {
+            set.forEach(point -> {
+                System.out.print(point.getOrderId() + ",");
+            });
+            System.out.println();
+        });
     }
-
 
     /**
      * 聚类方法
@@ -147,6 +144,12 @@ public class PointUtils {
         return returnList;
     }
 
+
+
+    public static void clusterV(List<Point> pointList, int distance) {
+
+    }
+
     /**
      * 获取邻近点
      *
@@ -175,7 +178,7 @@ public class PointUtils {
             double y2m = xytemp[0];
 
             int value = (int) LatitudeLontitudeUtil.lineSpace(x1m, y1m, x2m, y2m);
-            System.out.println(point.getOrderId() + "--->" + p.getOrderId() + ":" + value);
+//            System.out.println(point.getOrderId() + "--->" + p.getOrderId() + ":" + value);
             if (value <= distance) {
                 list.add(p);
             }

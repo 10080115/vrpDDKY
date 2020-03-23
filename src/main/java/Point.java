@@ -48,6 +48,9 @@ public class Point {
      */
     private Long expectArrivalUnixTime;
 
+    private Long arriveUnixTime;
+
+
     /**
      * 预估到达时间(路径规划给出)
      */
@@ -139,6 +142,13 @@ public class Point {
 
     public void setExpectArrivalUnixTime(Long expectArrivalUnixTime) {
         this.expectArrivalUnixTime = expectArrivalUnixTime;
+    }
+    public Long getArriveUnixTime() {
+        return arriveUnixTime;
+    }
+
+    public void setArriveUnixTime(Long arriveUnixTime) {
+        this.arriveUnixTime = arriveUnixTime;
     }
 
     public Long getEstimateUnixTime() {

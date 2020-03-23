@@ -137,6 +137,7 @@ public class VRP {
                     p.setShippingType(Integer.parseInt(rawData[10]));
                     p.setExpectArrivalUnixTime(Long.parseLong(rawData[14]));
                     p.setAuditUnixTime(Long.parseLong(rawData[13]));
+                    p.setArriveUnixTime(Long.parseLong(rawData[15]));
 
                     //暂时先用默认值
                     p.setOrderHang(false);
