@@ -6,6 +6,7 @@ public class Point {
     /**
      * 站点编号
      */
+
     private Integer stationId;
 
     /**
