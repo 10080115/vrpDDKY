@@ -48,6 +48,9 @@ public class Point {
      */
     private Long expectArrivalUnixTime;
 
+    private Long arriveUnixTime;
+
+
     /**
      * 预估到达时间(路径规划给出)
      */
@@ -72,6 +75,26 @@ public class Point {
      * 运单交付时间
      */
     private Long sugUnixTime;
+
+//    /**
+//     * @author guoyang
+//     * @param l
+//     * @param v
+//     * @param v1
+//     */
+//
+//    public Point(long l, double v, double v1) {
+//    }
+
+
+    public Point() {
+    }
+
+    public Point(Long orderId, Double sendLatitude, Double sendLongitude) {
+        this.orderId = orderId;
+        this.sendLatitude = sendLatitude;
+        this.sendLongitude = sendLongitude;
+    }
 
     public Long getOrderId() {
         return orderId;
@@ -119,6 +142,13 @@ public class Point {
 
     public void setExpectArrivalUnixTime(Long expectArrivalUnixTime) {
         this.expectArrivalUnixTime = expectArrivalUnixTime;
+    }
+    public Long getArriveUnixTime() {
+        return arriveUnixTime;
+    }
+
+    public void setArriveUnixTime(Long arriveUnixTime) {
+        this.arriveUnixTime = arriveUnixTime;
     }
 
     public Long getEstimateUnixTime() {
